@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="version" content="NebenzentraleNewsletterV3.1 bytipz969">
+<title>NebenzentraleNewsletterV3.1 bytipz969</title>
+<style>
+:root{color-scheme:light dark}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{background:#fff;color:#111}
+#app{min-height:100vh;background:#fff;color:#111}
+.page{max-width:1235px;margin:0 auto;padding:26px 0 70px}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;padding-bottom:15px}
+.brand{font-family:Arial,Helvetica,sans-serif;font-size:40px;font-weight:800;letter-spacing:-2.4px}
+.brand span{font-family:Arial,Helvetica,sans-serif;font-weight:800;letter-spacing:-2.5px;font-style:normal}
+.mini{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800}
+ 
+.hero{display:grid;grid-template-columns:615px 560px;gap:60px;align-items:center;padding:78px 0 65px}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:2.1px;font-weight:900;margin-bottom:24px}
+h1{font-size:80px;line-height:.9;letter-spacing:-4.8px;margin:0 0 26px;font-weight:400}
+.hero p{font-size:23px;line-height:1.25;max-width:620px;margin:0 0 26px}
+.signup{display:grid;grid-template-columns:360px 245px;gap:10px;max-width:615px}
+.signup input{width:360px;min-width:0;border:2px solid #111;background:#fff;padding:17px 16px;font-size:16px;color:#111;border-radius:7px}
+.signup button{width:245px;border:2px solid #111;background:#111;color:#fff;padding:17px 20px;border-radius:7px;font-size:14px;font-weight:900;cursor:pointer;white-space:nowrap}
+.note{font-size:12px;opacity:.65;margin-top:10px}
+.mock{width:560px;max-width:560px;background:#fff;color:#111;border:3px solid #111;box-shadow:10px 10px 0 #111;border-radius:2px;transform:rotate(.7deg);margin-left:0}
+.mockhead{padding:17px 20px;border-bottom:2px solid #111;display:flex;justify-content:space-between;align-items:end}
+.mocklogo{font-weight:900;font-size:22px;letter-spacing:-1px}
+.date{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:800}
+.issue{padding:18px 20px 20px}
+.issue h2{font-size:30px;line-height:.96;letter-spacing:-1.5px;margin:0 0 12px}
+.issue .dek{font-size:14px;line-height:1.35;margin:0 0 18px}
+.rule{height:2px;background:#111;margin:15px 0}
+.story{padding:10px 0 14px}
+.kicker{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;font-weight:900;margin-bottom:5px}
+.story h3{font-size:19px;line-height:1.05;margin:0 0 5px;letter-spacing:-.5px}
+.story p{font-size:12px;line-height:1.35;margin:0}
+.story[data-article]{cursor:pointer}
+.story[data-article]:hover h3{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.reader{position:fixed;inset:0;background:rgba(255,255,255,.97);z-index:50;display:none;overflow:auto;color:#111}
+.reader.open{display:block}
+.readerInner{max-width:900px;margin:0 auto;padding:28px 28px 90px}
+.readerNav{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #111;padding-bottom:14px}
+.readerClose{border:2px solid #111;background:#fff;color:#111;padding:10px 14px;font-size:11px;font-weight:900;letter-spacing:1.2px;cursor:pointer}
+.readerKicker{font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-top:55px}
+.reader h2{font-size:clamp(42px,7vw,76px);line-height:.86;letter-spacing:-4px;margin:12px 0 22px}
+.readerLead{font-size:22px;line-height:1.2;font-weight:700;max-width:720px}
+.readerBody{font-size:16px;line-height:1.55;max-width:720px;margin-top:24px}
+.readerProduct{margin-top:55px;border-top:2px solid #111;border-bottom:2px solid #111;padding:20px 0;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.readerProduct small{display:block;font-size:10px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:6px}
+.readerProduct strong{font-size:22px;letter-spacing:-.7px}
+.readerProduct a{border:2px solid #111;background:#111;color:#fff;padding:12px 14px;text-decoration:none;font-size:10px;font-weight:900;letter-spacing:1px;white-space:nowrap}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:54px}
+.card{border:2px solid #111;background:#fff;color:#111;padding:20px 18px;min-height:180px}
+.card .num{font-size:13px;font-weight:900;opacity:.55}
+.card h3{font-size:28px;letter-spacing:-1.4px;line-height:.95;margin:12px 0 9px}
+.card p{font-size:14px;line-height:1.35;margin:0}
+.productCard{display:block;color:inherit;text-decoration:none;position:relative;transition:transform .15s ease,box-shadow .15s ease}
+.productCard:hover{transform:translateY(-3px);box-shadow:6px 6px 0 currentColor}
+.productCard .buy{display:inline-block;margin-top:22px;font-size:10px;font-weight:900;letter-spacing:1px;text-decoration:underline;text-underline-offset:4px}
+.productCard{overflow:hidden}
+.productVisual{height:105px;margin:-20px -18px 16px;background:#f2f2f2;border-bottom:2px solid #111;display:flex;align-items:center;justify-content:center}
+.productVisual svg{width:145px;height:85px}
+.productCard .buy{color:#111}
+.statusTop{display:flex;align-items:center}
+.weather{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;font-weight:900;text-align:right;line-height:1.25;min-width:105px}
+.weather .temp{font-size:20px;letter-spacing:-.5px;font-weight:950}
+.weather .season{opacity:.7;margin-top:2px}
+
+
+.bigband{margin-top:70px;padding:34px 0;border-top:2px solid currentColor;border-bottom:2px solid currentColor;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.bigband h2{font-size:clamp(38px,5vw,66px);letter-spacing:-3px;line-height:.9;margin:0}
+.bigband .pill{display:inline-block;border:2px solid currentColor;border-radius:999px;padding:11px 16px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1px}
+.bottom{display:flex;justify-content:space-between;gap:25px;padding-top:22px;font-size:12px;opacity:.62}
+@media(max-width:1280px){.page{padding-left:24px;padding-right:24px}.hero{grid-template-columns:minmax(0,1fr) 52%;gap:45px}.mock{width:100%;max-width:560px;margin-left:auto}.signup{grid-template-columns:minmax(0,1fr) 245px}.signup input{width:auto}}
+@media(max-width:850px){.page{padding-left:18px;padding-right:18px}.hero{grid-template-columns:1fr;gap:38px;padding-top:55px}.strip{grid-template-columns:1fr 1fr}.mock{width:100%;max-width:640px}.bigband{align-items:flex-start;flex-direction:column}h1{font-size:clamp(58px,12vw,80px);letter-spacing:-3px}.signup{grid-template-columns:1fr}.signup input,.signup button{width:100%}}
+@media(max-width:560px){.page{padding-left:18px;padding-right:18px}.brand{font-size:27px}.mini{font-size:10px}.signup{flex-direction:column}.signup button{width:100%}.strip{grid-template-columns:1fr}.hero p{font-size:19px}.mock{box-shadow:7px 7px 0 #111}}
+
+.trendCard .trendArrow{font-size:58px;font-weight:950;line-height:1}
+
+.library{margin-top:82px;border-top:2px solid #111;padding-top:34px}
+.libraryHead{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:end;margin-bottom:24px}
+.libraryHead h2{font-size:clamp(42px,5vw,68px);line-height:.9;letter-spacing:-3px;margin:0 0 14px;font-weight:400}
+.libraryHead p{font-size:16px;line-height:1.45;max-width:700px;margin:0}
+.libraryHead input{width:100%;border:2px solid #111;padding:15px 16px;border-radius:6px;background:#fff;color:#111;font-size:15px}
+.libraryFilters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.libraryFilter{border:1px solid #111;background:#fff;color:#111;padding:8px 11px;font-size:10px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;cursor:pointer}
+.libraryFilter.active{background:#111;color:#fff}
+.libraryGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.libraryCard{border:2px solid #111;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.libraryImage{height:150px;width:100%;object-fit:cover;display:block;filter:grayscale(1)}
+.libraryCardBody{padding:15px 16px 17px}
+.libraryCard h3{font-size:21px;line-height:1;letter-spacing:-.8px;margin:0 0 12px}
+.libraryProducts{display:grid;gap:7px}
+.libraryProducts a{color:#111;text-decoration:none;border-top:1px solid #ddd;padding-top:7px;font-size:12px;line-height:1.15}
+.libraryProducts a:hover{text-decoration:underline}
+.libraryMeta{margin-top:12px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;opacity:.55}
+@media(max-width:900px){.libraryGrid{grid-template-columns:repeat(2,1fr)}.libraryHead{grid-template-columns:1fr}}
+@media(max-width:560px){.libraryGrid{grid-template-columns:1fr}.libraryFilters{max-height:220px;overflow:auto}}
+
+</style>
+</head>
+<body>
+<div id="app">
+  <main class="page">
+    <header class="top">
+      <div class="brand">Die<span>Nebenzentrale</span></div>
+      <div class="statusTop">
+        <div class="weather">
+          <div class="temp" id="temperature">-- °C</div>
+          <div class="season" id="season">Jahreszeit wird geladen</div>
+        </div>
+        
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">DEUTSCHLAND. ANDERS BETRACHTET.</div>
+        <h1>Das, was<br>Deutschland<br>interessant macht.</h1>
+        
+        <div class="signup">
+          <input id="email" type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse">
+          <button id="subscribe">KOSTENLOS ANMELDEN</button>
+        </div>
+        <div class="note" id="status">Keine Zeitung. Keine endlosen Texte. Einfach DieNebenzentrale.</div>
+      </div>
+
+      <article class="mock" aria-label="Vorschau einer Newsletter-Ausgabe">
+        <div class="mockhead"><div class="mocklogo">DieNebenzentrale</div><div class="date">AUSGABE <span id="issueDate">--.--.---- · --:--:--</span></div></div>
+        <div class="issue">
+          <h2>Was diese Woche in Deutschland hängen bleibt.</h2>
+          <div class="rule"></div>
+          <div class="story" data-article="bauwerk" tabindex="0" role="button"><div class="kicker">Das ist Deutschland</div><h3>Warum unter dieser Straße plötzlich ein riesiges Bauwerk steckt.</h3><p>Eine kurze Geschichte. Die Zahl, die hängen bleibt. Und warum das Ding überhaupt so gebaut wurde.</p></div>
+          <div class="story" data-article="auto" tabindex="0" role="button"><div class="kicker">Die Autowelt</div><h3>Dieses Auto sieht normal aus. Ist es aber nicht.</h3><p>Technik, Strecke, Preis und die kleine Geschichte dahinter.</p></div>
+          <div class="story" data-article="essen" tabindex="0" role="button"><div class="kicker">Das Essen in Deutschland</div><h3>Warum dieses Produkt im Supermarkt so aussieht, wie es aussieht.</h3><p>Herstellung, Marke, Preis und der Teil, den man sonst übersieht.</p></div>
+          <div class="story" data-article="zimmer" tabindex="0" role="button"><div class="kicker">Produkte fürs Zimmer</div><h3>3 Dinge, die wirklich einen Unterschied machen.</h3><p>Mit passenden Kaufideen statt Produktmüll.</p></div>
+        </div>
+      </article>
+    </section>
+    <div class="reader" id="reader" aria-hidden="true">
+      <div class="readerInner">
+        <div class="readerNav"><div class="brand">Die<span>Nebenzentrale</span></div><button class="readerClose" id="readerClose">SCHLIESSEN</button></div>
+        <div class="readerKicker" id="readerKicker"></div>
+        <h2 id="readerTitle"></h2>
+        <div class="readerLead" id="readerLead"></div>
+        <div class="readerBody" id="readerBody"></div>
+        <div class="readerProduct"><div><small> </small><strong id="productName"></strong></div><a id="productLink" href="#" target="_blank" rel="noopener noreferrer">  ↗</a></div>
+      </div>
+    </div>
+
+    <section class="strip" id="productStrip">
+      <a class="card productCard" href="https://www.amazon.de/s?k=LED-Schreibtischlampe&tag=nebenzentrale-21" target="_blank" rel="noopener noreferrer sponsored">
+        <div class="productVisual" aria-hidden="true"><svg viewBox="0 0 180 100"><rect x="72" y="15" width="12" height="55" rx="6" fill="#111"/><path d="M78 18 C105 18 120 28 125 43 L82 43 Z" fill="#111"/><rect x="55" y="70" width="55" height="8" rx="4" fill="#111"/><rect x="74" y="63" width="8" height="10" fill="#111"/></svg></div>
+        <div class="num">01 · AMAZON</div><h3>LED-Schreibtischlampe</h3><p>Für Schreibtisch, Gaming-Setup und Arbeitszimmer.</p><span class="buy">AUF AMAZON ANSEHEN ↗</span>
+      </a>
+      <a class="card productCard" href="https://www.amazon.de/s?k=USB-C-Ladeger%C3%A4t&tag=nebenzentrale-21" target="_blank" rel="noopener noreferrer sponsored">
+        <div class="productVisual" aria-hidden="true"><svg viewBox="0 0 180 100"><rect x="63" y="18" width="54" height="58" rx="8" fill="#111"/><rect x="76" y="10" width="9" height="14" rx="2" fill="#111"/><rect x="96" y="10" width="9" height="14" rx="2" fill="#111"/><circle cx="80" cy="47" r="4" fill="#fff"/><circle cx="100" cy="47" r="4" fill="#fff"/></svg></div>
+        <div class="num">02 · AMAZON</div><h3>USB-C-Ladegerät</h3><p>Ein kleines Teil, das fast jeder ständig braucht.</p><span class="buy">AUF AMAZON ANSEHEN ↗</span>
+      </a>
+      <a class="card productCard" href="https://www.amazon.de/s?k=Bluetooth-Lautsprecher&tag=nebenzentrale-21" target="_blank" rel="noopener noreferrer sponsored">
+        <div class="productVisual" aria-hidden="true"><svg viewBox="0 0 180 100"><rect x="50" y="27" width="80" height="48" rx="10" fill="#111"/><circle cx="74" cy="51" r="12" fill="#fff"/><circle cx="106" cy="51" r="12" fill="#fff"/><circle cx="74" cy="51" r="5" fill="#111"/><circle cx="106" cy="51" r="5" fill="#111"/></svg></div>
+        <div class="num">03 · AMAZON</div><h3>Bluetooth-Lautsprecher</h3><p>Für Musik, Zimmer und unterwegs.</p><span class="buy">AUF AMAZON ANSEHEN ↗</span>
+      </a>
+      <a class="card productCard" href="https://www.amazon.de/s?k=Steckdosenleiste+USB&tag=nebenzentrale-21" target="_blank" rel="noopener noreferrer sponsored">
+        <div class="productVisual" aria-hidden="true"><svg viewBox="0 0 180 100"><rect x="35" y="39" width="110" height="25" rx="8" fill="#111"/><circle cx="55" cy="51" r="5" fill="#fff"/><circle cx="78" cy="51" r="5" fill="#fff"/><circle cx="101" cy="51" r="5" fill="#fff"/><circle cx="124" cy="51" r="5" fill="#fff"/></svg></div>
+        <div class="num">04 · AMAZON</div><h3>Steckdosenleiste mit USB</h3><p>Ordnung und zusätzliche Anschlüsse für den Schreibtisch.</p><span class="buy">AUF AMAZON ANSEHEN ↗</span>
+      </a>
+    </section>
+
+    <script>
+
+const issueDate=document.getElementById('issueDate');
+const seasonEl=document.getElementById('season');
+const tempEl=document.getElementById('temperature');
+
+function updateClock(){
+  const now=new Date();
+  const pad=(n,len=2)=>String(n).padStart(len,'0');
+  const ms=pad(now.getMilliseconds(),3);
+  issueDate.textContent =
+    `${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()} · ` +
+    `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}.${ms}`;
+
+  const m=now.getMonth()+1, d=now.getDate();
+  let season='Winter';
+  if((m===3&&d>=20)||m===4||m===5||(m===6&&d<21)) season='Frühling';
+  else if((m===6&&d>=21)||m===7||m===8||(m===9&&d<23)) season='Sommer';
+  else if((m===9&&d>=23)||m===10||m===11||(m===12&&d<21)) season='Herbst';
+  seasonEl.textContent=season;
+}
+updateClock();
+setInterval(updateClock,1);
+
+async function loadWeather(){
+  try{
+    let lat=52.52, lon=13.405; // Berlin fallback
+    if(navigator.geolocation){
+      const pos=await new Promise((resolve,reject)=>{
+        navigator.geolocation.getCurrentPosition(resolve,reject,{timeout:3500,maximumAge:600000});
+      });
+      lat=pos.coords.latitude;
+      lon=pos.coords.longitude;
+    }
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m&timezone=auto`);
+    const data=await r.json();
+    const t=data?.current?.temperature_2m;
+    if(Number.isFinite(t)) tempEl.textContent=`${t.toFixed(1).replace('.',',')} °C`;
+  }catch(e){
+    tempEl.textContent='Wetter -- °C';
+  }
+}
+loadWeather();
+
+const input=document.getElementById('email');
+const button=document.getElementById('subscribe');
+const status=document.getElementById('status');
+button.addEventListener('click',()=>{
+  const v=input.value.trim();
+  if(!v || !v.includes('@')){status.textContent='Trag erst eine gültige E-Mail-Adresse ein.';input.focus();return;}
+  status.textContent='Demo-Anmeldung: Diese Vorschau speichert keine E-Mail-Adresse.';
+  button.textContent='DABEI';
+});
+const reader=document.getElementById('reader');
+const closeReader=document.getElementById('readerClose');
+const articles={
+  bauwerk:{kicker:'Das ist Deutschland',title:'Warum unter dieser Straße plötzlich ein riesiges Bauwerk steckt.',lead:'Oben sieht man Asphalt. Darunter beginnt eine zweite Welt.',body:'Man fährt jeden Tag daran vorbei und bemerkt es kaum. Unter Straßen liegen Tunnel, Leitungen, Schächte und technische Räume, die eine Stadt überhaupt erst funktionieren lassen. Die Geschichte dahinter ist oft viel größer als das Bauwerk, das man an der Oberfläche sieht.'},
+  auto:{kicker:'Die Autowelt',title:'Dieses Auto sieht normal aus. Ist es aber nicht.',lead:'Die spannendsten Details sind oft die, die man im Vorbeifahren nicht sieht.',body:'Hinter einer Karosserie stecken hunderte Entscheidungen: Gewicht, Aerodynamik, Motor, Material und Fertigung. Eine kleine technische Lösung kann ein ganzes Fahrzeug verändern – und genau diese Details machen Autos interessant.'},
+  essen:{kicker:'Das Essen in Deutschland',title:'Warum dieses Produkt im Supermarkt so aussieht, wie es aussieht.',lead:'Die Form ist kein Zufall.',body:'Verpackungen müssen schützen, stapelbar sein, hergestellt werden können und im Regal funktionieren. Dazu kommen Marke, Preis und Gewohnheit. Ein Produkt, das völlig normal aussieht, ist deshalb oft das Ergebnis einer langen Reihe von Entscheidungen.'},
+  zimmer:{kicker:'Produkte fürs Zimmer',title:'3 Dinge, die wirklich einen Unterschied machen.',lead:'Nicht mehr Zeug. Nur Dinge mit einem klaren Zweck.',body:'Licht, Klang und Ordnung verändern ein Zimmer stärker als hundert kleine Dekorationen. Deshalb geht es hier um Produkte, die eine konkrete Funktion haben und tatsächlich etwas an der Atmosphäre oder Nutzung verändern.'}
+};
+const products=[
+  ['LED-Schreibtischlampe','https://www.amazon.de/s?k=LED-Schreibtischlampe&tag=nebenzentrale-21'],
+  ['USB-C-Ladegerät','https://www.amazon.de/s?k=USB-C-Ladeger%C3%A4t&tag=nebenzentrale-21'],
+  ['Gaming-Mauspad','https://www.amazon.de/s?k=Gaming-Mauspad&tag=nebenzentrale-21'],
+  ['Bluetooth-Lautsprecher','https://www.amazon.de/s?k=Bluetooth-Lautsprecher&tag=nebenzentrale-21'],
+  ['Steckdosenleiste mit USB','https://www.amazon.de/s?k=Steckdosenleiste+USB&tag=nebenzentrale-21']
+];
+function openArticle(key){
+  const a=articles[key];
+  if(!a)return;
+  document.getElementById('readerKicker').textContent=a.kicker;
+  document.getElementById('readerTitle').textContent=a.title;
+  document.getElementById('readerLead').textContent=a.lead;
+  document.getElementById('readerBody').textContent=a.body;
+  const p=products[Math.floor(Math.random()*products.length)];
+  document.getElementById('productName').textContent=p[0];
+  document.getElementById('productLink').href=p[1];
+  reader.classList.add('open');
+  reader.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeArticle(){
+  reader.classList.remove('open');
+  reader.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.story[data-article]').forEach(el=>{
+  el.addEventListener('click',()=>openArticle(el.dataset.article));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openArticle(el.dataset.article);}});
+});
+closeReader.addEventListener('click',closeArticle);
+reader.addEventListener('click',e=>{if(e.target===reader)closeArticle();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeArticle();});
+</script>
+</body>
+</html>
+</script>
+</body>
+</html>
